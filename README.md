@@ -1,7 +1,7 @@
-# ✒️ Sublime Outline to HTML
-Create HTML pages from your tab indented / whitespace significant notes.
+# ✒️ Sublime Outliner Notes to HTML
+Create HTML pages from your tab indented notes / whitespace significant notes.
 
-Turn your indented notes into HTML in Sublime Text.
+All from the comfort of Sublime Text!
 
 ````
 All you have to do...
