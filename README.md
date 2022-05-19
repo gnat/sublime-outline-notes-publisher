@@ -4,7 +4,7 @@ Create HTML pages from your tab indented / whitespace significant notes.
 Turn your indented notes into HTML in Sublime Text.
 
 ```
-✒️ These are your notes.
+📬️ These are your notes.
 
 All you have to do...
     Is create an indented hierarchy.
@@ -25,7 +25,7 @@ Great plugin for
     Note taking.
     Outlining.
 
-↕️ Common markdown / markup syntax supported.
+✅ Common markdown / markup syntax supported.
 
 # Header 1 line
 ## Header 2 line
