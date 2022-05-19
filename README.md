@@ -41,9 +41,9 @@ Great plugin for
 Regular HTML is passed through unchanged for maximum flexibility.
 ```
 
-## HTML created from above
+## Resulting HTML
 
-![image](https://user-images.githubusercontent.com/24665/169245500-d5f66cbd-8700-44c3-b664-f50607467fa3.png)
+![Screenshot](https://user-images.githubusercontent.com/24665/169255835-c632616a-b8e6-42df-91b3-0ac4e9100477.png)
 
 ## Installation
 
