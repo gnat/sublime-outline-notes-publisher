@@ -1,14 +1,14 @@
 # ✒️ Sublime Outliner Notes to HTML
-Create HTML pages from your indented / whitespace significant notes.
+Publish HTML pages using your regular tab indented notes.
 
-All from the comfort of [Sublime Text](https://www.sublimetext.com/)!
+Zero dependency publishing from the comfort of your code editor!
 
 ## Publish HTML
 
 ![Screenshot](https://user-images.githubusercontent.com/24665/169287961-c3ba086c-72d1-41df-a8b9-e37426957fba.png)
 
 
-## From your whitespace significant notes!
+## Hierarchy aware notes!
 
 ````
 All you have to do...
@@ -19,7 +19,7 @@ All you have to do...
         With a hierarchy based on indent levels.
             Isn't this convenient?
             Whitespace significant outliner style notes.
-            Other cool outliners:
+            Inspired by other cool outliners:
                 Bike
                 Dynalist
                 Obsidian
