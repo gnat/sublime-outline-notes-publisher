@@ -119,6 +119,8 @@ class OutlineToHtmlCreator:
 
 			if indentLevel > 0:
 				output += f"{HTML_WS}{WS*(indentLevel)}" + "<li>" + prefix + line + suffix + "</li>"
+			elif prefix in ['<strong>', '<em>']:
+				output += f"{HTML_WS}{WS*(indentLevel)}" + prefix + line + suffix + "<br />"
 			elif prefix:
 				output += f"{HTML_WS}{WS*(indentLevel)}" + prefix + line + suffix
 			else:
