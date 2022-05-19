@@ -19,6 +19,7 @@ All you have to do...
             Isn't this convenient?
             Whitespace significant outliner style notes.
             Similar to:
+                Bike
                 Dynalist
                 Obsidian
                 Workflowy
@@ -79,3 +80,13 @@ Supported languages for [code blocks](https://prismjs.com/#supported-languages) 
 ## Suggested Sublime Color Schemes
 
 * [Invader Zim](https://github.com/gnat/sublime-invader-zim) 🛸
+
+## Similar projects.
+
+* [Bike](https://www.hogbaysoftware.com/bike/)
+* [Dynalist](https://dynalist.io/)
+* [Obsidian Publish](https://obsidian.md/publish)
+* [Workflowy](https://workflowy.com/)
+* [Roam Research](https://roamresearch.com/)
+* [Notion](https://www.notion.so/)
+
