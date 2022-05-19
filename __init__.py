@@ -46,7 +46,7 @@ class OutlineToHtmlCreator:
 
 	def create(self, textIterable):
 		indentLevelPrevious = 0
-		sublistCount = 0
+		insideCodeBlock = False
 		output = ""
 
 		HTML_TITLE = "Hello World"
@@ -61,6 +61,22 @@ class OutlineToHtmlCreator:
 
 		# Parse text
 		for line in textIterable:
+
+			# ``` Code block.
+			if(insideCodeBlock or line.find("```") == 0):
+				if not insideCodeBlock and line.find("```") == 0:
+					output += f"<pre><code class='language-css'>{line}"
+					insideCodeBlock = True
+					continue
+				# End of code block.
+				elif insideCodeBlock and line.find("```") == 0:
+					output += f"{line}</code></pre>"
+					insideCodeBlock = False
+					continue
+				else:
+					# Inside code block.
+					output += f"{line}"
+					continue
 
 			# // Metadata comments.
 			if(line.find("//title ") == 0):
