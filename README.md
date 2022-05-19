@@ -1,7 +1,7 @@
 # ✒️ Sublime Outliner Notes to HTML
 Create HTML pages from your indented / whitespace significant notes.
 
-All from the comfort of Sublime Text!
+All from the comfort of [Sublime Text](https://www.sublimetext.com/)!
 
 ## Publish HTML
 
