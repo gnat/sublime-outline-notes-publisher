@@ -44,28 +44,42 @@ class OutlineToHtmlCreator:
 	def fromSelection(self, text):
 		return self.create(text.split("\n"))
 
-	def tagify(self, text, token, token_end, formatter, remove_token_end=False):
-		''' Attempt to convert token into tag. '''
-		if (pos := text.find(token)) >= 0:
-			url = ''
-			url_end = 0
-			token_remove = len(token)
-			# Bail if this token is inside a quote (ex: HTML tag attribute)
-			if text[pos-1] == '"' or text[pos-1] == "'":
-				return text
-			# Extract URL
-			partial = text[pos:]
-			for i,c in enumerate(partial):
-				if c.isspace() or c == token_end: # Will end at whitespace or token_end
-					url_end = pos+i
-					break
-			if not url_end: # We reached EOL
-				url_end = len(text)
-			url = text[pos+token_remove:url_end]
-			if remove_token_end:
-				text = text[:pos] + formatter.format(url) + text[url_end+len(token_end):]
-			else:
-				text = text[:pos] + formatter.format(url) + text[url_end:]
+	def tagify(self, text, token, token_end, formatter, remove_token=False):
+		pos = 0
+		found = True
+		while found:
+			found = False
+			''' Attempt to convert tokens into tags. '''
+			if (pos := text.find(token, pos)) >= 0:
+				found = True
+				url = ''
+				url_name = ''
+				url_end = 0
+				token_remove = len(token)
+				# Bail if this token is inside a quote (ex: HTML tag attribute)
+				if text[pos-1] == '"' or text[pos-1] == "'":
+					pos = pos+1
+					continue
+				# Bail if this ")[" token does not have supporting "[" or ")"
+				if token == "](":
+					if text.find('[', 0, pos) == -1 or text.find(')', pos) == -1:
+						return text
+				# Extract name.
+				if token == "](":
+					url_name = text[text.find('[', 0, pos)+1:pos]
+				# Extract URL
+				partial = text[pos:]
+				for i,c in enumerate(partial):
+					if c.isspace() or c == token_end: # Will end at whitespace or token_end
+						url_end = pos+i
+						break
+				if not url_end: # We reached EOL
+					url_end = len(text)
+				url = text[pos+token_remove:url_end]
+				if token == "](": # Special case.
+					text = text[:text.find('[', 0, pos)] + formatter.format(url, url_name) + text[url_end+len(token_end):]
+				else:
+					text = text[:pos] + formatter.format(url, url_name) + text[url_end:]
 		return text
 
 	def create(self, textIterable):
@@ -171,9 +185,10 @@ class OutlineToHtmlCreator:
 					prefix = f"<{value}>"
 					suffix = f"</{value}>"
 
+			line = self.tagify(line, "](", ')', '<a href="{0}">{1}</a>', remove_token=True) # Named link.
 			line = self.tagify(line, "https://", ')', '<a href="https://{0}">{0}</a>')
 			line = self.tagify(line, "http://", ')', '<a href="http://{0}">{0}</a>')
-			line = self.tagify(line, "(/", ')', '<a href="/{0}">{0}</a>', remove_token_end=True)
+
 
 			if indentLevel > 0:
 				output += f"{HTML_WS}{WS*(indentLevel)}" + "<li>" + prefix + line + suffix + "</li>"
