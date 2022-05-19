@@ -51,15 +51,6 @@ Great plugin for
 
 Manually invoke for development: `view.run_command('outline_to_html')`
 
-## Formatting
-
-We borrow just a few very common non-whitespace things from Markdown.
-
-* `*` will wrap the item in an `<em>` tag.
-* `**` will wrap the item in a `<strong>` tag.
-* `//` indicates a comment, excluding the line from the results.
-* `//title Sample Title` to add a page title.
-
 ## Roadmap
 
 * Automatic table of contents.
