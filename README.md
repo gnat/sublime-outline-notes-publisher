@@ -60,7 +60,7 @@ Manually invoke for development: `view.run_command('outline_to_html')`
 
 ## Special Thanks
 
-* Harrison of [Indent.txt](https://github.com/Harrison-M/indent.txt) for the inspiration for such a plugin which I hope to improve upon and make available to people who want to edit and publish their notes in Sublime Text.
+* Harrison of [Indent.txt](https://github.com/Harrison-M/indent.txt) for the inspiration for such a plugin.
 
 ### Suggested Sublime Color Schemes
 
