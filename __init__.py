@@ -52,7 +52,7 @@ class OutlineToHtmlCreator:
 		HTML_TITLE = "Hello World"
 		HTML_STYLES = """
 		body { font-family: "sans"; background: #222; color: #aaa; }
-		ul { list-style-type: none; }
+		ul { list-style-type: circle; }
 		"""
 		HTML_WS = f"\n{WS*2}"
 
@@ -66,6 +66,7 @@ class OutlineToHtmlCreator:
 			if(line.find("//title ") == 0):
 				line = line.replace("//title ", "")
 				HTML_TITLE = line
+				continue
 
 			# // Comments.
 			if(line.find("//") == 0):
@@ -82,18 +83,24 @@ class OutlineToHtmlCreator:
 
 			# Does a new level of indentation need to be created?
 			if(indentDiff >= 1):
+				output += f"{HTML_WS}{WS*(indentLevel-1)}<ul>"
+				'''
 				if indentLevel > 1:
 					output += f"{HTML_WS}{WS*(indentLevel-1)}<li><ul>"
 				else:
 					output += f"{HTML_WS}{WS*(indentLevel-1)}<ul>"
+				'''
 			# Outdent
 			elif(indentDiff <= -1):
 				outdentLevel = abs(indentDiff)
 				for i in range(outdentLevel):
+					output += f"{HTML_WS}{WS*(indentLevel+outdentLevel-i-1)}</ul>"
+					'''
 					if indentLevel+outdentLevel-i > 1:
 						output += f"{HTML_WS}{WS*(indentLevel+outdentLevel-i-1)}</ul></li>"
 					else:
 						output += f"{HTML_WS}{WS*(indentLevel+outdentLevel-i-1)}</ul>"
+					'''
 
 			# Special format line.
 			prefix = ""
