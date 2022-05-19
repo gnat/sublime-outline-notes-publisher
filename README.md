@@ -3,13 +3,13 @@ Create HTML pages from your tab indented / whitespace significant notes.
 
 Turn your indented notes into HTML in Sublime Text.
 
-```
+````
 All you have to do...
     Is create an indented hierarchy.
     Of your notes.
     In a list.
     It will become a nice HTML file.
-        With a list hierarchy based on indent levels.
+        With a hierarchy based on indent levels.
             Isn't this convenient?
             Whitespace significant outliner style notes.
             Similar to:
@@ -22,6 +22,14 @@ All you have to do...
 Great plugin for
     Note taking.
     Outlining.
+
+🚧 Code blocks!
+
+```javascript
+document.addEventListener("click", ev => {
+    alert("You selected the following element: " + ev.target)
+})
+```
 
 ✅ Common markdown / markup syntax supported.
 
@@ -37,9 +45,7 @@ Great plugin for
 🏗️ Comments to insert structural metadata.
 
 //title I will be added to <html> ▶️ <head> ▶️ <title>
-
-Regular HTML is passed through unchanged for maximum flexibility.
-```
+````
 
 ## Resulting HTML
 
@@ -56,6 +62,8 @@ Regular HTML is passed through unchanged for maximum flexibility.
 3. The resulting HTML will open in a new tab.
 
 Manually invoke for development: `view.run_command('outline_to_html')`
+
+Supported languages for [code blocks](https://prismjs.com/#supported-languages) powered by [Prism.js](https://prismjs.com).
 
 ## Roadmap
 
