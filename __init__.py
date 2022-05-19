@@ -95,26 +95,34 @@ class OutlineToHtmlCreator:
 					else:
 						output += f"{HTML_WS}{WS*(indentLevel+outdentLevel-i-1)}</ul>"
 
-			# Format line
+			# Special format line.
 			prefix = ""
 			suffix = ""
+			line = line.strip()
 
-			# <strong>
-			if(line.find("** ") == 0):
-				line = line[2:]
-				tag = "<strong>"
-				suffix = "</strong>"
+			special = {
+				"# ": "h1",
+				"## ": "h2",
+				"### ": "h3",
+				"#### ": "h4",
+				"##### ": "h5",
+				"###### ": "h6",
+				"** ": "strong",
+				"* ": "em",
+			}
 
-			# <em>
-			if(line.find("* ") == 0):
-				line = line[1:]
-				prefix = "<em>"
-				suffix = "</em>"
+			for key,value in special.items():
+				if line.startswith(key):
+					line = line.replace(key, "")
+					prefix = f"<{value}>"
+					suffix = f"</{value}>"
 
 			if indentLevel > 0:
 				output += f"{HTML_WS}{WS*(indentLevel)}" + "<li>" + prefix + line + suffix + "</li>"
+			elif prefix:
+				output += f"{HTML_WS}{WS*(indentLevel)}" + prefix + line + suffix
 			else:
-				output += f"{HTML_WS}{WS*(indentLevel)}" + prefix + line + suffix + "<br />"
+				output += f"{HTML_WS}{WS*(indentLevel)}" + prefix + line + suffix + "<br />" # Plain text.
 
 			indentLevelPrevious = indentLevel
 
