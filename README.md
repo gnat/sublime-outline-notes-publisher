@@ -4,20 +4,41 @@ Create HTML pages from your tab indented / whitespace significant notes.
 Turn your indented notes into HTML in Sublime Text.
 
 ```
+✒️ These are your notes.
+
 All you have to do...
     Is create an indented hierarchy.
     Of your notes.
     In a list.
     It will become a nice HTML file.
-        With a ul hierarchy based on indent levels.
-        * And simple.
-        ** formatting.
-        //This line will be left out of the HTML file.
-        //title Hello World
-        Special comments will be inserted as page metadata.
-Great plugin for:
+        With a <ul> hierarchy based on indent levels.
+            Isn't this convenient?
+            Whitespace significant outliner style notes.
+            Similar to:
+                Dynalist
+                Obsidian
+                Workflowy
+                Roam Research
+                Notion
+            In Sublime Text!
+Great plugin for
     Note taking.
     Outlining.
+
+↕️ Common markdown / markup syntax supported.
+
+# Header 1 line
+## Header 2 line
+* Emphasis line
+** Bold line
+
+💬 Comments supported.
+
+// I wont be output to the final HTML file.
+
+🏗️ Use comments to insert structural metadata.
+
+//title THIS TEXT WILL BE ADDED TO <html>➡️<head>➡️<title>...
 ```
 
 ## Installation
