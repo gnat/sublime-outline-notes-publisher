@@ -51,7 +51,7 @@ class OutlineToHtmlCreator:
 
 		HTML_TITLE = "Hello World"
 		HTML_STYLES = """
-		body { font-family: "sans"; background: #222; color: #aaa; }
+		body { font-size: 1em; font-family: "sans"; background: #222; color: #aaa; padding: 2rem 2.4rem }
 		ul { list-style-type: circle; }
 		"""
 		HTML_WS = f"\n{WS*2}"
@@ -62,20 +62,26 @@ class OutlineToHtmlCreator:
 		# Parse text
 		for line in textIterable:
 
-			# ``` Code block.
+			# ```lang Code block.
 			if(insideCodeBlock or line.find("```") == 0):
 				if not insideCodeBlock and line.find("```") == 0:
-					output += f"<pre><code class='language-css'>{line}"
+					if line == "```\n":
+						language = 'html'
+					else:
+						line = line.replace("```", "")
+						language = line.split("\n")[0]
+					output += f"<pre><code class='language-{language}'>"
 					insideCodeBlock = True
 					continue
 				# End of code block.
 				elif insideCodeBlock and line.find("```") == 0:
+					line = line.replace("```", "")
 					output += f"{line}</code></pre>"
 					insideCodeBlock = False
 					continue
 				else:
 					# Inside code block.
-					output += f"{line}"
+					output += f"{line}\n"
 					continue
 
 			# // Metadata comments.
