@@ -9,7 +9,7 @@ All you have to do...
     Of your notes.
     In a list.
     It will become a nice HTML file.
-        With a <ul> hierarchy based on indent levels.
+        With a list hierarchy based on indent levels.
             Isn't this convenient?
             Whitespace significant outliner style notes.
             Similar to:
@@ -37,6 +37,8 @@ Great plugin for
 🏗️ Comments to insert structural metadata.
 
 //title I will be added to <html> ▶️ <head> ▶️ <title>
+
+Regular HTML is passed through unchanged for maximum flexibility.
 ```
 
 ## Installation
