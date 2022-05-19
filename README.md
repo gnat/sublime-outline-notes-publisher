@@ -1,7 +1,13 @@
 # ✒️ Sublime Outliner Notes to HTML
-Create HTML pages from your tab indented notes / whitespace significant notes.
+Create HTML pages from your indented / whitespace significant notes.
 
 All from the comfort of Sublime Text!
+
+## Publish HTML
+
+![Screenshot](https://user-images.githubusercontent.com/24665/169255835-c632616a-b8e6-42df-91b3-0ac4e9100477.png)
+
+## From your whitespace significant notes!
 
 ````
 All you have to do...
@@ -46,10 +52,6 @@ document.addEventListener("click", ev => {
 
 //title I will be added to <html> ▶️ <head> ▶️ <title>
 ````
-
-## Resulting HTML
-
-![Screenshot](https://user-images.githubusercontent.com/24665/169255835-c632616a-b8e6-42df-91b3-0ac4e9100477.png)
 
 ## Installation
 
