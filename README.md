@@ -1,11 +1,9 @@
-# Sublime Outline to HTML
+# ✒️ Sublime Outline to HTML
 Create HTML pages from your tab indented / whitespace significant notes.
 
 Turn your indented notes into HTML in Sublime Text.
 
 ```
-📬️ These are your notes.
-
 All you have to do...
     Is create an indented hierarchy.
     Of your notes.
@@ -32,13 +30,13 @@ Great plugin for
 * Emphasis line
 ** Bold line
 
-💬 Comments supported.
+💬 Comments.
 
-// I wont be output to the final HTML file.
+// I will not be in the HTML file.
 
-🏗️ Use comments to insert structural metadata.
+🏗️ Comments to insert structural metadata.
 
-//title THIS TEXT WILL BE ADDED TO <html>➡️<head>➡️<title>...
+//title I will be added to <html> ▶️ <head> ▶️ <title>
 ```
 
 ## Installation
