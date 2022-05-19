@@ -81,7 +81,7 @@ Supported languages for [code blocks](https://prismjs.com/#supported-languages) 
 
 * [Invader Zim](https://github.com/gnat/sublime-invader-zim) 🛸
 
-## Similar projects.
+## Other Cool Outliners / Bullet Point Note Software
 
 * [Bike](https://www.hogbaysoftware.com/bike/)
 * [Dynalist](https://dynalist.io/)
@@ -89,4 +89,5 @@ Supported languages for [code blocks](https://prismjs.com/#supported-languages) 
 * [Workflowy](https://workflowy.com/)
 * [Roam Research](https://roamresearch.com/)
 * [Notion](https://www.notion.so/)
-
+* [Standard Notes](https://standardnotes.com/)
+* [Evernote](https://www.evernote.com/)
