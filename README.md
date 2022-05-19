@@ -1,7 +1,13 @@
-# ✒️ Sublime Outline to HTML
-Create HTML pages from your tab indented / whitespace significant notes.
+# ✒️ Sublime Outliner Notes to HTML
+Create HTML pages from your indented / whitespace significant notes.
 
-Turn your indented notes into HTML in Sublime Text.
+All from the comfort of [Sublime Text](https://www.sublimetext.com/)!
+
+## Publish HTML
+
+![Screenshot](https://user-images.githubusercontent.com/24665/169255835-c632616a-b8e6-42df-91b3-0ac4e9100477.png)
+
+## From your whitespace significant notes!
 
 ````
 All you have to do...
@@ -13,6 +19,7 @@ All you have to do...
             Isn't this convenient?
             Whitespace significant outliner style notes.
             Similar to:
+                Bike
                 Dynalist
                 Obsidian
                 Workflowy
@@ -31,7 +38,7 @@ document.addEventListener("click", ev => {
 })
 ```
 
-✅ Common markdown / markup syntax supported.
+✅ Common markdown / markup syntax.
 
 # Header 1 line
 ## Header 2 line
@@ -42,14 +49,10 @@ document.addEventListener("click", ev => {
 
 // I will not be in the HTML file.
 
-🏗️ Comments to insert structural metadata.
+🏗️ Comments for structural metadata.
 
 //title I will be added to <html> ▶️ <head> ▶️ <title>
 ````
-
-## Resulting HTML
-
-![Screenshot](https://user-images.githubusercontent.com/24665/169255835-c632616a-b8e6-42df-91b3-0ac4e9100477.png)
 
 ## Installation
 
@@ -60,8 +63,6 @@ document.addEventListener("click", ev => {
 1. Select text you want to convert.
 2. `CTRL+SHIFT+P` ➡️ `Outline to HTML`
 3. The resulting HTML will open in a new tab.
-
-Manually invoke for development: `view.run_command('outline_to_html')`
 
 Supported languages for [code blocks](https://prismjs.com/#supported-languages) powered by [Prism.js](https://prismjs.com).
 
@@ -77,3 +78,19 @@ Supported languages for [code blocks](https://prismjs.com/#supported-languages) 
 ## Suggested Sublime Color Schemes
 
 * [Invader Zim](https://github.com/gnat/sublime-invader-zim) 🛸
+
+## Other Cool Outliners / Bullet Point Note Software
+
+* [Bike](https://www.hogbaysoftware.com/bike/)
+* [Dynalist](https://dynalist.io/)
+* [Obsidian Publish](https://obsidian.md/publish)
+* [Workflowy](https://workflowy.com/)
+* [Roam Research](https://roamresearch.com/)
+* [Notion](https://www.notion.so/)
+* [Standard Notes](https://standardnotes.com/)
+* [Evernote](https://www.evernote.com/)
+
+## Troubleshooting
+
+* `View` ➡️ `Show Console`
+* Manually invoke for development: `view.run_command('outline_to_html')`
