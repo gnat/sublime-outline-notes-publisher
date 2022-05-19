@@ -71,10 +71,6 @@ Supported languages for [code blocks](https://prismjs.com/#supported-languages) 
 * Automatic table of contents.
 * More metadata comments.
 
-## Special Thanks
-
-* Harrison of [Indent.txt](https://github.com/Harrison-M/indent.txt) for the inspiration for such a plugin.
-
 ## Suggested Sublime Color Schemes
 
 * [Invader Zim](https://github.com/gnat/sublime-invader-zim) 🛸
@@ -94,3 +90,7 @@ Supported languages for [code blocks](https://prismjs.com/#supported-languages) 
 
 * `View` ➡️ `Show Console`
 * Manually invoke for development: `view.run_command('outline_to_html')`
+
+## Special Thanks
+
+* Harrison of [Indent.txt](https://github.com/Harrison-M/indent.txt) for the inspiration for such a plugin.
