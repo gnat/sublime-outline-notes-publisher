@@ -64,8 +64,6 @@ document.addEventListener("click", ev => {
 2. `CTRL+SHIFT+P` ➡️ `Outline to HTML`
 3. The resulting HTML will open in a new tab.
 
-Manually invoke for development: `view.run_command('outline_to_html')`
-
 Supported languages for [code blocks](https://prismjs.com/#supported-languages) powered by [Prism.js](https://prismjs.com).
 
 ## Roadmap
@@ -91,3 +89,8 @@ Supported languages for [code blocks](https://prismjs.com/#supported-languages) 
 * [Notion](https://www.notion.so/)
 * [Standard Notes](https://standardnotes.com/)
 * [Evernote](https://www.evernote.com/)
+
+## Troubleshooting
+
+* `View` ➡️ `Show Console`
+* Manually invoke for development: `view.run_command('outline_to_html')`
