@@ -41,6 +41,10 @@ Great plugin for
 Regular HTML is passed through unchanged for maximum flexibility.
 ```
 
+## HTML created from above
+
+![image](https://user-images.githubusercontent.com/24665/169245500-d5f66cbd-8700-44c3-b664-f50607467fa3.png)
+
 ## Installation
 
 `Preferences` ➡️ `Browse Packages ...` ➡️ `cd User` ➡️ [Download and extract the latest.](https://github.com/gnat/sublime-outliner-html/archive/refs/heads/main.zip)
