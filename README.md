@@ -5,7 +5,8 @@ All from the comfort of [Sublime Text](https://www.sublimetext.com/)!
 
 ## Publish HTML
 
-![Screenshot](https://user-images.githubusercontent.com/24665/169255835-c632616a-b8e6-42df-91b3-0ac4e9100477.png)
+![Screenshot](https://user-images.githubusercontent.com/24665/169287961-c3ba086c-72d1-41df-a8b9-e37426957fba.png)
+
 
 ## From your whitespace significant notes!
 
@@ -18,17 +19,21 @@ All you have to do...
         With a hierarchy based on indent levels.
             Isn't this convenient?
             Whitespace significant outliner style notes.
-            Similar to:
+            Other cool outliners:
                 Bike
                 Dynalist
                 Obsidian
+                    Obsidian Publish
                 Workflowy
                 Roam Research
                 Notion
-            In Sublime Text!
+                Standard Notes
+                Evernote
+            In Sublime Text (https://sublimetext.com)
 Great plugin for
     Note taking.
     Outlining.
+    Zero dependency publishing.
 
 🚧 Code blocks!
 
@@ -45,11 +50,20 @@ document.addEventListener("click", ev => {
 * Emphasis line
 ** Bold line
 
+### Images with img
+
+<img src="https://avatars.githubusercontent.com/u/24665" />
+
+### Global and Local Links
+
+http://github.com/gnat/sublime-outliner-html
+(/local_links)
+
 💬 Comments.
 
 // I will not be in the HTML file.
 
-🏗️ Comments for structural metadata.
+🏗️ Comments to insert structural metadata.
 
 //title I will be added to <html> ▶️ <head> ▶️ <title>
 ````
