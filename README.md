@@ -14,22 +14,25 @@ All you have to do...
     Is create an indented hierarchy.
     Of your notes.
     In a list.
-    It will become a nice HTML file.
+    It will become a nice HTML file...
         With a hierarchy based on indent levels.
             Isn't this convenient?
-            Whitespace significant outliner style notes.
-            Inspired by other cool outliners:
-                Bike
+            Whitespace significant outliner style notes!
+            Other cool outliners:
+                [Bike](https://news.ycombinator.com/item?id=31409077)
                 Dynalist
-                Obsidian
-                    Obsidian Publish
+                [Obsidian](https://obsidian.md)
+                    [Obsidian Publish](https://obsidian.md/publish)
                 Workflowy
                 Roam Research
                 Notion
                 Standard Notes
                 Evernote
-            In Sublime Text (https://sublimetext.com)
-Great plugin for
+                    Ever-who? 🐘
+            Only for:
+                Sublime Text (https://sublimetext.com)
+                Super Nintendo
+🔥 Great plugin for
     Note taking.
     Outlining.
     Zero dependency publishing.
@@ -51,12 +54,12 @@ document.addEventListener("click", ev => {
 
 ### Images with img
 
-<img src="https://avatars.githubusercontent.com/u/24665" />
+<img src="https://avatars.githubusercontent.com/u/24665" style="max-width: 200px" />
 
-### Global and Local Links
+### Global and Local Links. Plain, named and pure HTML links.
 
 http://github.com/gnat/sublime-outliner-html
-(/local_links)
+🔗 [Local named link!](/local_link) 🌐 [Global named Link!](http://google.com) https://google.com <a href="https://google.com">Pure HTML link!</a>
 
 💬 Comments.
 
