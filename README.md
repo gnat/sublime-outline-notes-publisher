@@ -31,7 +31,7 @@ document.addEventListener("click", ev => {
 })
 ```
 
-✅ Common markdown / markup syntax supported.
+✅ Common markdown / markup syntax.
 
 # Header 1 line
 ## Header 2 line
@@ -42,7 +42,7 @@ document.addEventListener("click", ev => {
 
 // I will not be in the HTML file.
 
-🏗️ Comments to insert structural metadata.
+🏗️ Comments for structural metadata.
 
 //title I will be added to <html> ▶️ <head> ▶️ <title>
 ````
