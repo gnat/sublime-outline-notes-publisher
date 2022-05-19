@@ -62,6 +62,6 @@ Manually invoke for development: `view.run_command('outline_to_html')`
 
 * Harrison of [Indent.txt](https://github.com/Harrison-M/indent.txt) for the inspiration for such a plugin.
 
-### Suggested Sublime Color Schemes
+## Suggested Sublime Color Schemes
 
 * [Invader Zim](https://github.com/gnat/sublime-invader-zim) 🛸
