@@ -5,8 +5,7 @@ Zero dependency publishing from the comfort of your code editor!
 
 ## Publish HTML
 
-![Screenshot](https://user-images.githubusercontent.com/24665/169287961-c3ba086c-72d1-41df-a8b9-e37426957fba.png)
-
+![Screenshot](https://user-images.githubusercontent.com/24665/169327275-2b53060d-22ce-40b5-90d1-10c5399d81c2.png)
 
 ## Hierarchy aware notes!
 
