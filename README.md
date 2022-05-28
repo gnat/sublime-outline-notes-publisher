@@ -1,20 +1,28 @@
-# ✒️ Sublime Outliner Notes to HTML
-Publish HTML pages using your regular tab indented notes.
+# ✒️ Sublime Outline Notes Publisher
+Publish HTML pages using your regular tab indented notes. 🔥
 
-Zero dependency publishing from the comfort of your code editor!
+Zero dependency publishing from the comfort of your code editor! 🔥
 
-## Publish HTML
+Perfect for:
+
+* Note takers who love using tab indentation / whitespace for organization.
+* Static site generator for personal sites, blogs, micro wiki.
+* Zettelkasten
+* Replacing your outliner with Sublime Text.
+  * What is an [Outliner](https://en.wikipedia.org/wiki/Outliner)?
+
+## Publish HTML Pages ...
 
 ![Screenshot](https://user-images.githubusercontent.com/24665/169327275-2b53060d-22ce-40b5-90d1-10c5399d81c2.png)
 
-## Hierarchy aware notes!
+## Using your hierarchy aware notes!
 
 ````
 All you have to do...
     Is create an indented hierarchy.
     Of your notes.
     In a list.
-    It will become a nice HTML file...
+    It will create a nice HTML file...
         With a hierarchy based on indent levels.
             Isn't this convenient?
             Whitespace significant outliner style notes!
@@ -72,7 +80,7 @@ http://github.com/gnat/sublime-outliner-html
 
 ## Installation
 
-`Preferences` ➡️ `Browse Packages ...` ➡️ [Download and extract the latest.](https://github.com/gnat/sublime-outliner-html/archive/refs/heads/main.zip)
+`Preferences` ➡️ `Browse Packages ...` ➡️ [Download and extract the latest.](https://github.com/gnat/sublime-outline-notes-publisher/archive/refs/heads/main.zip)
 
 ## How to use
 
