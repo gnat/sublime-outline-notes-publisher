@@ -1,9 +1,17 @@
 import sublime, sublime_plugin
 import re
 
+HTML_TITLE = "Hello World" # Replace using //title New Title
+HTML_STYLES = """
+body { font-size: 1em; font-family: "sans"; background: #222; color: #aaa; padding: 2rem 2.4rem; }
+ul { list-style-type: circle; }
+a { color: white; }
+"""
+
 INDENT_TABS = '\t'     # One tab is typical.
 INDENT_SPACES = '    ' # If you use something other than 4 spaces.
 WS = INDENT_TABS       # Whitespace.
+HTML_WS = f"\n{WS*2}"
 
 class OutlineToHtml(sublime_plugin.TextCommand):
 	def run(self, edit):
@@ -11,16 +19,16 @@ class OutlineToHtml(sublime_plugin.TextCommand):
 
 		# Get current selection
 		sels = self.view.sel()
-		selsParsed = 0
+		sels_parsed = 0
 		if(len(sels) > 0):
 			for sel in sels:
 				# Make sure selection isn't just a cursor
 				if(abs(sel.b - sel.a) > 0):
 					self.fromRegion(parser, sel, edit)
-					selsParsed += 1
+					sels_parsed += 1
 
 		# All selections just cursor marks?
-		if(selsParsed == 0):
+		if(sels_parsed == 0):
 			region = sublime.Region(0, self.view.size() - 1)
 			self.fromRegion(parser, region, edit)
 
@@ -32,15 +40,6 @@ class OutlineToHtml(sublime_plugin.TextCommand):
 		newview.insert(edit, 0, indented)
 
 class OutlineToHtmlCreator:
-	"""
-	def fromFile(self, filename):
-		# TODO: Unused currently.
-		inputFile = open(filename, "rU")
-		output = self.create(inputFile)
-		inputFile.close()
-		return output
-	"""
-
 	def fromSelection(self, text):
 		return self.create(text.split("\n"))
 
@@ -82,41 +81,35 @@ class OutlineToHtmlCreator:
 					text = text[:pos] + formatter.format(url, url_name) + text[url_end:]
 		return text
 
-	def create(self, textIterable):
-		indentLevelPrevious = 0
-		insideCodeBlock = False
+	def create(self, text_iterable):
+		indent_level_previous = 0
+		inside_code_block = False
 		output = ""
 
-		HTML_TITLE = "Hello World"
-		HTML_STYLES = """
-		body { font-size: 1em; font-family: "sans"; background: #222; color: #aaa; padding: 2rem 2.4rem; }
-		ul { list-style-type: circle; }
-		a { color: white; }
-		"""
-		HTML_WS = f"\n{WS*2}"
+		global HTML_TITLE, HTML_STYLES, HTML_WS, INDENT_TABS, INDENT_SPACES, WS
 
 		# Compile whitespace regex for reuse.
-		regexIndent = re.compile(f"^({INDENT_TABS}|{INDENT_SPACES})")
+		regex_indent = re.compile(f"^({INDENT_TABS}|{INDENT_SPACES})")
 
 		# Parse text
-		for line in textIterable:
+		for line in text_iterable:
 
 			# ```lang Code block.
-			if(insideCodeBlock or line.find("```") == 0):
-				if not insideCodeBlock and line.find("```") == 0:
+			if(inside_code_block or line.find("```") == 0):
+				if not inside_code_block and line.find("```") == 0:
 					if line == "```\n":
 						language = 'html'
 					else:
 						line = line.replace("```", "")
 						language = line.split("\n")[0]
 					output += f"<pre><code class='language-{language}'>"
-					insideCodeBlock = True
+					inside_code_block = True
 					continue
 				# End of code block.
-				elif insideCodeBlock and line.find("```") == 0:
+				elif inside_code_block and line.find("```") == 0:
 					line = line.replace("```", "")
 					output += f"{line}</code></pre>"
-					insideCodeBlock = False
+					inside_code_block = False
 					continue
 				else:
 					# Inside code block.
@@ -134,33 +127,35 @@ class OutlineToHtmlCreator:
 				continue # Skip line.
 
 			# Levels of indentation
-			indentLevel = 0
+			indent_level = 0
 
-			while(regexIndent.match(line)):
-				line = regexIndent.sub("", line)
-				indentLevel += 1
+			while(regex_indent.match(line)):
+				line = regex_indent.sub("", line)
+				indent_level += 1
 
-			indentDiff = indentLevel - indentLevelPrevious
+			indentDiff = indent_level - indent_level_previous
 
 			# Does a new level of indentation need to be created?
 			if(indentDiff >= 1):
-				output += f"{HTML_WS}{WS*(indentLevel-1)}<ul>"
+				output += f"{HTML_WS}{WS*(indent_level-1)}<ul>"
 				'''
-				if indentLevel > 1:
-					output += f"{HTML_WS}{WS*(indentLevel-1)}<li><ul>"
+				# W3C compliant, but UGLY. Leave for now.
+				if indent_level > 1:
+					output += f"{HTML_WS}{WS*(indent_level-1)}<li><ul>"
 				else:
-					output += f"{HTML_WS}{WS*(indentLevel-1)}<ul>"
+					output += f"{HTML_WS}{WS*(indent_level-1)}<ul>"
 				'''
 			# Outdent
 			elif(indentDiff <= -1):
-				outdentLevel = abs(indentDiff)
-				for i in range(outdentLevel):
-					output += f"{HTML_WS}{WS*(indentLevel+outdentLevel-i-1)}</ul>"
+				outdent_level = abs(indentDiff)
+				for i in range(outdent_level):
+					output += f"{HTML_WS}{WS*(indent_level+outdent_level-i-1)}</ul>"
 					'''
-					if indentLevel+outdentLevel-i > 1:
-						output += f"{HTML_WS}{WS*(indentLevel+outdentLevel-i-1)}</ul></li>"
+					# W3C compliant, but UGLY. Leave for now.
+					if indent_level+outdent_level-i > 1:
+						output += f"{HTML_WS}{WS*(indent_level+outdent_level-i-1)}</ul></li>"
 					else:
-						output += f"{HTML_WS}{WS*(indentLevel+outdentLevel-i-1)}</ul>"
+						output += f"{HTML_WS}{WS*(indent_level+outdent_level-i-1)}</ul>"
 					'''
 
 			# Special format line.
@@ -190,16 +185,16 @@ class OutlineToHtmlCreator:
 			line = self.tagify(line, "http://", ')', '<a href="http://{0}">{0}</a>')
 
 
-			if indentLevel > 0:
-				output += f"{HTML_WS}{WS*(indentLevel)}" + "<li>" + prefix + line + suffix + "</li>"
+			if indent_level > 0:
+				output += f"{HTML_WS}{WS*(indent_level)}" + "<li>" + prefix + line + suffix + "</li>"
 			elif prefix in ['<strong>', '<em>']:
-				output += f"{HTML_WS}{WS*(indentLevel)}" + prefix + line + suffix + "<br />"
+				output += f"{HTML_WS}{WS*(indent_level)}" + prefix + line + suffix + "<br />"
 			elif prefix:
-				output += f"{HTML_WS}{WS*(indentLevel)}" + prefix + line + suffix
+				output += f"{HTML_WS}{WS*(indent_level)}" + prefix + line + suffix
 			else:
-				output += f"{HTML_WS}{WS*(indentLevel)}" + prefix + line + suffix + "<br />" # Plain text.
+				output += f"{HTML_WS}{WS*(indent_level)}" + prefix + line + suffix + "<br />" # Plain text.
 
-			indentLevelPrevious = indentLevel
+			indent_level_previous = indent_level
 
 		HTML_HEADER = f"""<!doctype html>
 <html lang='en'>
@@ -218,3 +213,12 @@ class OutlineToHtmlCreator:
 </html>
 """
 		return f"{HTML_HEADER}{output}{HTML_FOOTER}"
+
+	"""
+	# TODO: Unused currently. For generating from full directories.
+	def fromFile(self, filename):
+		input = open(filename, "rU")
+		output = self.create(input)
+		input.close()
+		return output
+	"""
