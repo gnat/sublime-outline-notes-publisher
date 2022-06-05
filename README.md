@@ -11,6 +11,13 @@ Perfect for:
 * Replacing your outliner with Sublime Text.
   * What is an [Outliner](https://en.wikipedia.org/wiki/Outliner)?
 
+<a href="https://github.com/gnat/sublime-outline-notes-publisher/tags">
+    <img src="https://img.shields.io/github/v/tag/gnat/sublime-outline-notes-publisher?label=release&style=for-the-badge&color=%230288D1" /></a>
+<!--<a href="https://packagecontrol.io/packages/Sublime%20Outline%20Notes%20Publisher">
+    <img src="https://img.shields.io/packagecontrol/dt/Sublime%20Outline%20Notes%20Publisher?style=for-the-badge&color=%2315b713" /></a>-->
+<a href="https://www.sublimetext.com/">
+    <img src="https://img.shields.io/badge/Only%20For-Sublime-ff9800?logo=sublime%20text&style=for-the-badge" /></a>
+
 ## Publish HTML Pages ...
 
 ![Screenshot](https://user-images.githubusercontent.com/24665/169327275-2b53060d-22ce-40b5-90d1-10c5399d81c2.png)
