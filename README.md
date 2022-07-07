@@ -1,5 +1,5 @@
 # ✒️ Sublime Outline Notes Publisher
-Publish HTML pages using markdown (md) or easy tab indented notes! 🔥
+Publish HTML pages using tab indented notes or markdown (md)! 🔥
 
 Zero dependency publishing from the comfort of your code editor. 🔥 It's Obsidian in Sublime Text!
 
@@ -104,7 +104,7 @@ Supported languages for [code blocks](https://prismjs.com/#supported-languages) 
 
 Configure using Preferences ➡ Settings
 
-```json
+```js
 {
     // ...
     "outline_to_html": {
