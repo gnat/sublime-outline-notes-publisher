@@ -1,7 +1,7 @@
 # ✒️ Sublime Outline Notes Publisher
-Publish HTML pages using markdown or tab indented notes! 🔥
+Publish HTML pages using markdown (md) or easy tab indented notes! 🔥
 
-Zero dependency publishing from the comfort of your code editor! 🔥
+Zero dependency publishing from the comfort of your code editor. 🔥 It's Obsidian in Sublime Text!
 
 Perfect for:
 
@@ -87,7 +87,10 @@ http://github.com/gnat/sublime-outliner-html
 
 ## Installation
 
-`Preferences` ➡️ `Browse Packages ...` ➡️ [Download and extract the latest.](https://github.com/gnat/sublime-outline-notes-publisher/archive/refs/heads/main.zip)
+Option A ([Package Control](https://github.com/wbond/package_control_channel/pull/8542). 🙏🏻 Soon!): `Preferences` ➡️ `Package Control` ➡️ `Install Package` ➡️ `Outline to HTML` ➡️ ENTER
+
+Option B (Direct): `Preferences` ➡️ `Browse Packages ...` ➡️ [Download and extract the latest.](https://github.com/gnat/sublime-outline-notes-publisher/archive/refs/heads/main.zip)
+
 
 ## How to use
 
@@ -96,6 +99,23 @@ http://github.com/gnat/sublime-outliner-html
 3. The resulting HTML will open in a new tab.
 
 Supported languages for [code blocks](https://prismjs.com/#supported-languages) powered by [Prism.js](https://prismjs.com).
+
+## Global Configuration (Optional)
+
+Configure using Preferences ➡ Settings
+
+```json
+{
+    // ...
+    "outline_to_html": {
+        // "css": "", // Override CSS.
+        // "title": "", // Override Title (or use meta comment //title ...)
+        // "header": "", // Add to <head>
+        // "body": "", // Add to <body>
+        // "footer": "", // Add before </body>
+    }
+}
+```
 
 ## Roadmap
 

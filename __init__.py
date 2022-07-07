@@ -1,20 +1,46 @@
 import sublime, sublime_plugin
 import re
 
-HTML_TITLE = "Hello World" # Replace using //title New Title
-HTML_STYLES = """
-body { font-size: 1em; font-family: "sans"; background: #222; color: #aaa; padding: 2rem 2.4rem; }
-ul { list-style-type: circle; }
-a { color: white; }
+"""
+Configure using Preferences ➡ Settings
+{
+	// ...
+	"outline_to_html": {
+		// "css": "", // Override CSS.
+		// "title": "", // Override Title (or use meta comment //title ...)
+		// "header": "", // Add to <head>
+		// "body": "", // Add to <body>
+		// "footer": "", // Add before </body>
+	}
+}
 """
 
-INDENT_TABS = '\t'     # One tab is typical.
-INDENT_SPACES = '    ' # If you use something other than 4 spaces.
-WS = INDENT_TABS       # Whitespace.
-HTML_WS = f"\n{WS*2}"
-
 class OutlineToHtml(sublime_plugin.TextCommand):
+	# Default settings.
+	HTML_TITLE = "Hello World" # Replace using //title New Title
+	HTML_CSS = """
+		body { font-size: 1em; font-family: "sans"; background: #222; color: #aaa; padding: 2rem 2.4rem; }
+		ul { list-style-type: circle; }
+		a { color: white; }
+		"""
+	HTML_HEADER_EXTRA = ''
+	HTML_BODY_EXTRA = ''
+	HTML_FOOTER_EXTRA = ''
+	INDENT_TABS = '\t'     # One tab is typical.
+	INDENT_SPACES = '    ' # If you use something other than 4 spaces.
+	WS = INDENT_TABS       # Whitespace.
+	HTML_WS = f"\n{WS*2}"
+
 	def run(self, edit):
+		s = OutlineToHtml
+		# Can be set by User Preferences.
+		_s = sublime.load_settings("Preferences.sublime-settings")
+		s.HTML_TITLE = _s.get("outline_to_html", {}).get("title", s.HTML_TITLE)
+		s.HTML_CSS = _s.get("outline_to_html", {}).get("css", s.HTML_CSS)
+		s.HTML_HEADER_EXTRA = _s.get("outline_to_html", {}).get("header", s.HTML_HEADER_EXTRA)
+		s.HTML_BODY_EXTRA = _s.get("outline_to_html", {}).get("body", s.HTML_BODY_EXTRA)
+		s.HTML_FOOTER_EXTRA = _s.get("outline_to_html", {}).get("footer", s.HTML_FOOTER_EXTRA)
+
 		parser = OutlineToHtmlCreator()
 
 		# Get current selection
@@ -82,14 +108,13 @@ class OutlineToHtmlCreator:
 		return text
 
 	def create(self, text_iterable):
+		s = OutlineToHtml
 		indent_level_previous = 0
 		inside_code_block = False
 		output = ""
 
-		global HTML_TITLE, HTML_STYLES, HTML_WS, INDENT_TABS, INDENT_SPACES, WS
-
 		# Compile whitespace regex for reuse.
-		regex_indent = re.compile(f"^({INDENT_TABS}|{INDENT_SPACES})")
+		regex_indent = re.compile(f"^({s.INDENT_TABS}|{s.INDENT_SPACES})")
 
 		# Parse text
 		for line in text_iterable:
@@ -119,7 +144,7 @@ class OutlineToHtmlCreator:
 			# // Metadata comments.
 			if(line.find("//title ") == 0):
 				line = line.replace("//title ", "")
-				HTML_TITLE = line
+				s.HTML_TITLE = line
 				continue
 
 			# // Comments.
@@ -137,25 +162,25 @@ class OutlineToHtmlCreator:
 
 			# Does a new level of indentation need to be created?
 			if(indentDiff >= 1):
-				output += f"{HTML_WS}{WS*(indent_level-1)}<ul>"
+				output += f"{s.HTML_WS}{s.WS*(indent_level-1)}<ul>"
 				'''
 				# W3C compliant, but UGLY. Leave for now.
 				if indent_level > 1:
-					output += f"{HTML_WS}{WS*(indent_level-1)}<li><ul>"
+					output += f"{s.HTML_WS}{s.WS*(indent_level-1)}<li><ul>"
 				else:
-					output += f"{HTML_WS}{WS*(indent_level-1)}<ul>"
+					output += f"{s.HTML_WS}{s.WS*(indent_level-1)}<ul>"
 				'''
 			# Outdent
 			elif(indentDiff <= -1):
 				outdent_level = abs(indentDiff)
 				for i in range(outdent_level):
-					output += f"{HTML_WS}{WS*(indent_level+outdent_level-i-1)}</ul>"
+					output += f"{s.HTML_WS}{s.WS*(indent_level+outdent_level-i-1)}</ul>"
 					'''
 					# W3C compliant, but UGLY. Leave for now.
 					if indent_level+outdent_level-i > 1:
-						output += f"{HTML_WS}{WS*(indent_level+outdent_level-i-1)}</ul></li>"
+						output += f"{s.HTML_WS}{s.WS*(indent_level+outdent_level-i-1)}</ul></li>"
 					else:
-						output += f"{HTML_WS}{WS*(indent_level+outdent_level-i-1)}</ul>"
+						output += f"{s.HTML_WS}{s.WS*(indent_level+outdent_level-i-1)}</ul>"
 					'''
 
 			# Special format line.
@@ -186,39 +211,41 @@ class OutlineToHtmlCreator:
 
 
 			if indent_level > 0:
-				output += f"{HTML_WS}{WS*(indent_level)}" + "<li>" + prefix + line + suffix + "</li>"
+				output += f"{s.HTML_WS}{s.WS*(indent_level)}" + "<li>" + prefix + line + suffix + "</li>"
 			elif prefix in ['<strong>', '<em>']:
-				output += f"{HTML_WS}{WS*(indent_level)}" + prefix + line + suffix + "<br />"
+				output += f"{s.HTML_WS}{s.WS*(indent_level)}" + prefix + line + suffix + "<br />"
 			elif prefix:
-				output += f"{HTML_WS}{WS*(indent_level)}" + prefix + line + suffix
+				output += f"{s.HTML_WS}{s.WS*(indent_level)}" + prefix + line + suffix
 			else:
-				output += f"{HTML_WS}{WS*(indent_level)}" + prefix + line + suffix + "<br />" # Plain text.
+				output += f"{s.HTML_WS}{s.WS*(indent_level)}" + prefix + line + suffix + "<br />" # Plain text.
 
 			indent_level_previous = indent_level
 
 		HTML_HEADER = f"""<!doctype html>
 <html lang='en'>
 	<head>
-		<title>{HTML_TITLE}</title>
-		<style>{HTML_STYLES}</style>
+		<title>{s.HTML_TITLE}</title>
+		<style>{s.HTML_CSS}</style>
 		<link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.28.0/themes/prism-twilight.min.css" rel="stylesheet" />
+		{s.HTML_HEADER_EXTRA}
 	</head>
 	<body>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.28.0/components/prism-core.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.28.0/plugins/autoloader/prism-autoloader.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.28.0/components/prism-core.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.28.0/plugins/autoloader/prism-autoloader.min.js"></script>
+		{s.HTML_BODY_EXTRA}
 """
 
-		HTML_FOOTER = f"""
+		HTML_FOOTER = f"""{s.HTML_FOOTER_EXTRA}
 	</body>
 </html>
 """
 		return f"{HTML_HEADER}{output}{HTML_FOOTER}"
 
-	"""
-	# TODO: Unused currently. For generating from full directories.
-	def fromFile(self, filename):
-		input = open(filename, "rU")
-		output = self.create(input)
-		input.close()
-		return output
-	"""
+"""
+# TODO: Unused currently. For generating from full directories.
+def fromFile(self, filename):
+	input = open(filename, "rU")
+	output = self.create(input)
+	input.close()
+	return output
+"""
