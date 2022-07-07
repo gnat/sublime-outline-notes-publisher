@@ -1,5 +1,5 @@
 # ✒️ Sublime Outline Notes Publisher
-Publish HTML pages using your regular tab indented notes. 🔥
+Publish HTML pages using markdown or tab indented notes! 🔥
 
 Zero dependency publishing from the comfort of your code editor! 🔥
 
