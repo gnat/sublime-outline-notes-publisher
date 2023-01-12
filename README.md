@@ -1,7 +1,9 @@
 # ✒️ Sublime Outline Notes Publisher
 Publish HTML pages using tab indented notes or markdown (md)! 🔥
 
-Zero dependency publishing from the comfort of your code editor. 🔥 It's Obsidian in Sublime Text!
+It's Obsidian in Sublime Text.
+
+Zero dependency publishing from the comfort of your code editor. 🔥
 
 Perfect for:
 
@@ -87,7 +89,7 @@ http://github.com/gnat/sublime-outliner-html
 
 ## Installation
 
-Option A ([Package Control](https://github.com/wbond/package_control_channel/pull/8542). 🙏🏻 Soon!): `Preferences` ➡️ `Package Control` ➡️ `Install Package` ➡️ `Outline to HTML` ➡️ ENTER
+Option A: `Preferences` ➡️ `Package Control` ➡️ `Install Package` ➡️ `Outline to HTML` ➡️ ENTER
 
 Option B (Direct): `Preferences` ➡️ `Browse Packages ...` ➡️ [Download and extract the latest.](https://github.com/gnat/sublime-outline-notes-publisher/archive/refs/heads/main.zip)
 
