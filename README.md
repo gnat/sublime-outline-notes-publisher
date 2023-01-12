@@ -1,9 +1,7 @@
 # ✒️ Sublime Outline Notes Publisher
-Publish HTML pages using tab indented notes or markdown (md)! 🔥
+Publish HTML pages using tab indented notes or markdown (md)! It's Obsidian in Sublime Text. 🔥
 
-It's Obsidian in Sublime Text.
-
-Zero dependency publishing from the comfort of your code editor. 🔥
+Zero dependency publishing from the comfort of your code editor.
 
 Perfect for:
 
